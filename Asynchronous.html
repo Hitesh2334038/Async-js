@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Asynchronous Javascript</title>
+  </head>
+  <body>
+    <h1>Asynchronous js</h1>
+    <script type="text/javascript">
+      /*const second=()=> {
+      setTimeout(()=>{
+          console.log('Asynchronous hey there');
+      },5000);
+      }
+      setTimeout(()=>{
+        console.log('Hitesh Sonar');
+      },6000);
+
+      const first =()=>{
+          console.log('hey there');
+        second();
+        console.log('The End');
+      }
+      first();
+
+      const image=document.getElementById('img');
+
+      processLargeImage(image,()=>{
+          console.log('Image Proceed');
+      });
+
+function getRecipe(){
+  const recipeID=[523,883,432,974];
+  setTimeout(()=>{
+
+    console.log(recipeID);
+
+    setTimeout((id)=>{
+      const recipe={
+        title:"Fresh Tomato Pasta,publisher Hitesh"
+      };
+      console.log(`${id}:${recipe.title}`);
+
+      setTimeout(publisher =>{
+        const recipe2={
+          title:"Italyian pizza ,publisher :Hitesh"};
+          console.log(recipe2);
+
+      },1500,recipe.publisher);
+    },1000,recipeID[2]);
+
+  },1500);
+
+  setTimeout((id)=>{
+    const recipe1={
+      title:"Fresh Chees Cake publisher Akshay"
+    };
+    console.log(`${id}:${recipe1.title}`);
+
+  },5000,recipeID[0]);
+}
+getRecipe();*/
+/*
+const getIDs=new Promise((resolve,reject)=>{
+  setTimeout(()=>{
+    resolve([523,883,432,974]);
+  },1500);
+});
+
+const getRecipe=recID=>{
+  return new Promise((resolve,reject)=>{
+    setTimeout(ID=>{
+      const recipe={
+        title:"Fresh Chees Cake" , publisher: "Akshay"};
+        resolve(`${ID}:${recipe.title}`);
+      },1500,recID);
+
+  });
+};
+
+const getRelated=publisher=>{
+  return new Promise((resolve,reject)=>{
+    setTimeout(pub=>{
+      const recipe2={
+        title:"Italyian pizza" ,publisher :"Hitesh"};
+        resolve(`${pub}:${recipe2.title}`);
+    },2000,publisher);
+  });
+};
+/*
+getIDs
+.then(IDs=>{
+  console.log(IDs);
+  return getRecipe(IDs[2]);
+
+})
+.then(recipe=>{
+  console.log(recipe);
+  return getRelated('hitesh');
+})
+.then(recipe2=>{
+  console.log(recipe2);
+})
+.catch(error=>{
+  console.log('Error');
+});
+
+async function getRecipiAw(){
+  const IDs=await getIDs;
+  console.log(IDs);
+  const recipe=await getRecipe(IDs[2]);
+    console.log(recipe);
+    const related=await getRelated ('Hitesh');
+    console.log(related);
+
+return recipe;
+}
+getRecipiAw().then(recipe=>{
+  console.log(`Return vali : ${recipe}`);
+})*/
+
+/*fetch('https://www.trackcorona.live/api/countries')
+                .then(response =>{
+                  //  console.log(response);
+                  return response.json();}
+                )
+                .then(data => {console.log(data)});
+
+async function getWeather(){
+  try{
+  const response=fetch(`https://www.trackcorona.live/api/countries`);
+const data = await response.json;
+console.log(data);
+
+}catch(Error){
+  alert(Error);
+}
+}
+*/
+
+async function getWeatherAW() {
+         try {
+             const result = await fetch(`https://www.trackcorona.live/api/countries`);
+             const data = await result.json();
+
+
+             return data;
+         } catch(error) {
+             alert(error);
+         }
+     }
+     getWeatherAW();
+
+     let dataLondon;
+       getWeatherAW().then(data => {
+           dataLondon = data
+           console.log(dataLondon);
+       });
+
+
+
+
+    </script>
+<img id="img"src="hi.jpg" width="500" height="500">
+  </body>
+  <!-- <script src="myscripts.js"></script> -->
+</html>
